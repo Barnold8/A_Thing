@@ -1,1 +1,1 @@
-gcc main.c -Wall -o main.exe
+gcc main.c functions.c -Wall -o main.exe
