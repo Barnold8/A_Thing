@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-char** returnIMG(char* filename,int* len);
+void returnIMG(char* filename);
 
 void setup();
 
