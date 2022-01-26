@@ -7,4 +7,6 @@ char** returnIMG(char* filename);
 
 void setup();
 
+void titleSequence(char* kirb, char* title);
+
 #endif

@@ -1,0 +1,5 @@
+functions.c: In function 'returnIMG':
+functions.c:31:31: error: expected ')' before '}' token
+     if(currLine){free(currLine}
+                               ^
+functions.c:31:31: error: expected ';' before '}' token

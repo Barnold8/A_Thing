@@ -5,6 +5,7 @@ int main(){
   
     setup();
 
-    returnIMG("assets/kirb.txt");
+    titleSequence("assets/kirb.txt","assets/title.txt");
+    
     system("pause");
 }
