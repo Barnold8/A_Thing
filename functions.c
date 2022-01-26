@@ -33,13 +33,14 @@ int ListDirectoryContents(const char *sDir) //Refactored from https://stackoverf
             sprintf(sPath, "%s\\%s", sDir, fdFile.cFileName);
 
             //Is the entity a File or Folder?
-            if(fdFile.dwFileAttributes &FILE_ATTRIBUTE_DIRECTORY)
+            if(! (fdFile.dwFileAttributes &FILE_ATTRIBUTE_DIRECTORY))
             {
-                printf("Directory: %s\n", sPath);
-                ListDirectoryContents(sPath); //Recursion, I love it!
+                // printf("Directory: %s\n", sPath);
+                // ListDirectoryContents(sPath); //Recursion, I love it!
+                printf("File: %s\n", sPath);
             }
             else{
-                printf("File: %s\n", sPath);
+                
             }
         }
     }
@@ -48,7 +49,12 @@ int ListDirectoryContents(const char *sDir) //Refactored from https://stackoverf
     FindClose(hFind); //Always, Always, clean things up!
 
     return true;
+
+
+    return 0;
 }
+    
+
 
 void returnIMG(char* filename){
 
@@ -64,7 +70,7 @@ void returnIMG(char* filename){
 
     if(!(fptr = fopen(filename,"r"))){
         fprintf(stderr,"ERROR: Couldnt read file with filename %s\n",filename);
-        return NULL;
+        return;
     }
     
     while ((read = getline(&currLine, &len, fptr)) != -1) {
@@ -126,11 +132,14 @@ char* CWD(){
 struct LevelSeq* generateLevels(){
 
    char* currDIR = CWD();
-   printf("Current working directory %s\n",currDIR);
+   printf("CURR DIR %s\n",currDIR);
+   ListDirectoryContents(currDIR);
 
 
 
    free(currDIR);
+
+
 
    return NULL;
 

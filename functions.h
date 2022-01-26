@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <windows.h>
+#include <tchar.h> 
+
 
 
 #define pause system("pause");
@@ -30,8 +32,8 @@ struct LevelSeq{
 
 void GameLoop();
 
-
 int ListDirectoryContents(const char *sDir);
+
 
 
 #endif
