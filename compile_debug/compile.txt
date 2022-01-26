@@ -1,5 +1,4 @@
 functions.c: In function 'returnIMG':
-functions.c:31:31: error: expected ')' before '}' token
-     if(currLine){free(currLine}
-                               ^
-functions.c:31:31: error: expected ';' before '}' token
+functions.c:14:9: warning: unused variable 'i' [-Wunused-variable]
+     int i;
+         ^
