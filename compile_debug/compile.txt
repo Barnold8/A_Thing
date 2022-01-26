@@ -3,14 +3,12 @@ main.c:6:9: warning: unused variable 'inputCode' [-Wunused-variable]
      int inputCode;
          ^~~~~~~~~
 functions.c: In function 'returnIMG':
-functions.c:67:9: warning: unused variable 'i' [-Wunused-variable]
+functions.c:16:9: warning: unused variable 'i' [-Wunused-variable]
      int i;
          ^
-functions.c:66:9: warning: unused variable 'arrSize' [-Wunused-variable]
+functions.c:15:9: warning: unused variable 'arrSize' [-Wunused-variable]
      int arrSize = 0;
          ^~~~~~~
-functions.c:65:12: warning: unused variable 'strArray' [-Wunused-variable]
+functions.c:14:12: warning: unused variable 'strArray' [-Wunused-variable]
      char** strArray;
             ^~~~~~~~
-c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file main.exe: Permission denied
-collect2.exe: error: ld returned 1 exit status

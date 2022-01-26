@@ -32,7 +32,7 @@ struct LevelSeq{
 
 void GameLoop();
 
-int ListDirectoryContents(const char *sDir);
+int ListDirectoryContents(const char* sDir);
 
 
 
