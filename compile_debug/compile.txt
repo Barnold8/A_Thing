@@ -1,16 +1,20 @@
+main.c: In function 'main':
+main.c:6:9: warning: unused variable 'inputCode' [-Wunused-variable]
+     int inputCode;
+         ^~~~~~~~~
 functions.c: In function 'returnIMG':
-functions.c:20:16: warning: 'return' with a value, in function returning void
+functions.c:67:16: warning: 'return' with a value, in function returning void
          return NULL;
                 ^~~~
-functions.c:6:6: note: declared here
+functions.c:53:6: note: declared here
  void returnIMG(char* filename){
       ^~~~~~~~~
-functions.c:14:9: warning: unused variable 'i' [-Wunused-variable]
+functions.c:61:9: warning: unused variable 'i' [-Wunused-variable]
      int i;
          ^
-functions.c:13:9: warning: unused variable 'arrSize' [-Wunused-variable]
+functions.c:60:9: warning: unused variable 'arrSize' [-Wunused-variable]
      int arrSize = 0;
          ^~~~~~~
-functions.c:12:12: warning: unused variable 'strArray' [-Wunused-variable]
+functions.c:59:12: warning: unused variable 'strArray' [-Wunused-variable]
      char** strArray;
             ^~~~~~~~

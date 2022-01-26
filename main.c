@@ -1,12 +1,19 @@
 #include "functions.h"
 
 
-int main(){
+int main(int argc,char** argv){
   
+    int inputCode;
     setup();
-
-    titleSequence("assets/kirb.txt","assets/title.txt");
     
-    system("pause");
+    if(argc == 2){
+        titleSequence("assets/title.txt",argv[1]);
+    }else{
+        titleSequence("assets/title.txt","color D");
+    }
+
+    GameLoop();
+
+    pause
 
 }
