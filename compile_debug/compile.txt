@@ -2,13 +2,3 @@ main.c: In function 'main':
 main.c:6:9: warning: unused variable 'inputCode' [-Wunused-variable]
      int inputCode;
          ^~~~~~~~~
-functions.c: In function 'returnIMG':
-functions.c:16:9: warning: unused variable 'i' [-Wunused-variable]
-     int i;
-         ^
-functions.c:15:9: warning: unused variable 'arrSize' [-Wunused-variable]
-     int arrSize = 0;
-         ^~~~~~~
-functions.c:14:12: warning: unused variable 'strArray' [-Wunused-variable]
-     char** strArray;
-            ^~~~~~~~

@@ -11,9 +11,6 @@ void returnIMG(char* filename){
     char* currLine = NULL;
     size_t len = 0;
     ssize_t read;
-    char** strArray;
-    int arrSize = 0;
-    int i;
 
     // Get line amount of file for amount of strings of file 
 
@@ -56,16 +53,19 @@ char* CWD(){
 
 }
 
-int ListDirectoryContents(const char* sDir) //Refactored from https://stackoverflow.com/questions/2314542/listing-directory-contents-using-c-and-windows
+char** ListDirectoryContents(const char* sDir,const char* Directory,int* len) //Refactored from https://stackoverflow.com/questions/2314542/listing-directory-contents-using-c-and-windows
 {
     WIN32_FIND_DATA fdFile;
     HANDLE hFind = NULL;
-
+    int foundDir = 0;
+    const char delim[2] = "\\";
     char sPath[2048];
+    char*token;
+    int stringARRCount = 0;
+    char** stringARR = (char**)malloc(sizeof(char*)*20);
 
-    //Specify a file mask. *.* = We want everything!
     sprintf(sPath, "%s\\*.*", sDir);
-
+ 
     if((hFind = FindFirstFile(sPath, &fdFile)) == INVALID_HANDLE_VALUE)
     {
         printf("Path not found: [%s]\n", sDir);
@@ -74,23 +74,46 @@ int ListDirectoryContents(const char* sDir) //Refactored from https://stackoverf
 
     do
     {
-        //Find first file will always return "."
-        //    and ".." as the first two directories.
+
         if(strcmp(fdFile.cFileName, ".") != 0
                 && strcmp(fdFile.cFileName, "..") != 0)
         {
-            //Build up our file path using the passed in
-            //  [sDir] and the file/foldername we just found:
-            sprintf(sPath, "%s\\%s", sDir, fdFile.cFileName);
 
-            //Is the entity a File or Folder?
+            sprintf(sPath, "%s\\%s", sDir, fdFile.cFileName);
+            
             if(fdFile.dwFileAttributes &FILE_ATTRIBUTE_DIRECTORY)
             {
                 // printf("Directory: %s\n", sPath);
-                ListDirectoryContents(sPath); //Recursion, I love it!
+
+                ListDirectoryContents(sPath,Directory,NULL); 
+                
             }
-            else{
-                printf("File: %s\n", sPath);
+            else{   //This section will add strings to an array where we will be keeping filenames. This allows us to grab files out of a directory
+                    //Essentially we are assuming that because the targetted folder is in the param we dont need to return a full file path
+
+                token = strtok(sPath,delim);
+                
+                while(token){
+
+                    if(foundDir){
+                        printf("Desired Path: %s\n",token);
+                        foundDir = 0;
+                        stringARR[stringARRCount] = token;
+                        stringARRCount++;
+                    }
+
+                    else if(strcmp("assets",token)==0){
+
+                        foundDir = 1;
+
+                        
+
+                    }
+
+                    token = strtok(NULL,delim);
+
+                }
+                
             }
         }
     }
@@ -98,10 +121,9 @@ int ListDirectoryContents(const char* sDir) //Refactored from https://stackoverf
 
     FindClose(hFind); //Always, Always, clean things up!
 
-    return true;
+    // (*len) = (*len)+1;
 
-
-    return 0;
+    return stringARR;
 }
     
 
@@ -133,9 +155,12 @@ void GameLoop(struct LevelSeq* startLevel){
 
 
 struct LevelSeq* generateLevels(){
+    
+   int len = 0;
+   char ** x = ListDirectoryContents(CWD()," ",&len);
+   printf("--LEN-- %d\n",len);
 
-
-   ListDirectoryContents(CWD());
+   printf("First elem %s\n",x[0]);
 
 
 
