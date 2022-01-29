@@ -34,9 +34,9 @@
 
 
 
-									      1. Play
-									      2. Help
-									      3. Exit
+									      1.  Play
+									      2.  Help
+									      10. Exit
 	 
 
 

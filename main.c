@@ -3,7 +3,7 @@
 
 int main(int argc,char** argv){
   
-    int inputCode;
+    int inputCode,endState;
     setup();
     
     if(argc == 2){
@@ -12,8 +12,34 @@ int main(int argc,char** argv){
         titleSequence("assets/title.txt","color D");
     }
 
-    GameLoop();
+    while(inputCode != 10){
 
-    pause
+        switch(inputCode = getANS()){
+
+            case 1:
+                GameLoop(&endState);
+                
+                
+                break;
+
+            case 2:
+                system("clear");
+                returnIMG("assets/help.txt");
+                break;
+            
+            case 4:
+                system("clear");
+                titleSequence("assets/title.txt","color D");
+                break;
+            
+            default:
+                break;
+        }
+
+
+    }
+
+
+
 
 }

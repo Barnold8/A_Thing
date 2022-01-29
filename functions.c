@@ -5,6 +5,18 @@
 
 //atoi() string to int
 
+//https://www.youtube.com/watch?v=AQKi5fBicK0 <- Fail state
+
+int getANS(){
+    
+    int x;
+    
+    printf("\nEnter a number: ");
+    scanf("%d", &x);  
+    return x;
+
+}
+
 void returnIMG(char* filename){
 
     FILE* fptr;
@@ -52,8 +64,6 @@ char* CWD(){
    return str;
 
 }
-
-
 
 char** ListDirectoryContents(const char* sDir,const char* Directory,int* len) //Refactored from https://stackoverflow.com/questions/2314542/listing-directory-contents-using-c-and-windows
 {
@@ -128,9 +138,6 @@ char** ListDirectoryContents(const char* sDir,const char* Directory,int* len) //
     return stringARR;
 }
     
-
-
-
 void setup(){
 
     system("chcp 65001");
@@ -148,28 +155,42 @@ void titleSequence(char* kirb,char* command){
     returnIMG(kirb);
 }
 
-void GameLoop(struct LevelSeq* startLevel){
-    
-    generateLevels();
+void GameLoop(int* endState){
+    //setup
+    char fileNames[LEVEL_AMOUNT][100] = {"assets/kirbHappy.txt",
+       
+    };
+    char dialogue[LEVEL_AMOUNT][1024] = {"You see kirby, go say hi\n\n1.Go say hi\n2. Shout 'HELLO'\n,3. Cry\n4. Stay silent",
 
+    "",
+
+
+    };
+    int answers[LEVEL_AMOUNT] = {};
+    int lives = 10;
+    int currPosition = 0;
+    
+
+    
+    //
+
+    while(lives != 0){
+
+        // returnIMG(&fileNames[currPosition]);
+        getANS();
+        // printf("Lives %d\n",lives);
+        lives--;
+        currPosition++;
+        if(currPosition > LEVEL_AMOUNT){
+
+                // Win state
+
+        }
+
+
+    }
+
+
+    
 }
 
-
-
-struct LevelSeq* generateLevels(){
-    
-   int len = 0;
-   char ** x = ListDirectoryContents(CWD()," ",&len);
-   printf("--LEN-- %d\n",len);
-
-   printf("First elem %s\n",x[0]);
-
-
-
-//    free(currDIR);
-
-
-
-   return NULL;
-
-}

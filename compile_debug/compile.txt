@@ -1,8 +1,10 @@
-main.c: In function 'main':
-main.c:6:9: warning: unused variable 'inputCode' [-Wunused-variable]
-     int inputCode;
-         ^~~~~~~~~
-functions.c: In function 'something':
-functions.c:60:1: warning: control reaches end of non-void function [-Wreturn-type]
- }
- ^
+functions.c: In function 'GameLoop':
+functions.c:181:19: warning: passing argument 1 of 'returnIMG' from incompatible pointer type [-Wincompatible-pointer-types]
+         returnIMG(&fileNames[currPosition]);
+                   ^
+functions.c:20:6: note: expected 'char *' but argument is of type 'char (*)[100]'
+ void returnIMG(char* filename){
+      ^~~~~~~~~
+functions.c:171:9: warning: unused variable 'answers' [-Wunused-variable]
+     int answers[LEVEL_AMOUNT];
+         ^~~~~~~
