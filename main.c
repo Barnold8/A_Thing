@@ -6,14 +6,15 @@ int main(int argc,char** argv){
     int inputCode,endState;
     setup();
     
-    if(argc == 2){
-        titleSequence("assets/title.txt",argv[1]);
-    }else{
-        titleSequence("assets/title.txt","color D");
-    }
+
 
     while(inputCode != 10){
-
+        system("cls");
+        if(argc == 2){
+            titleSequence("assets/title.txt",argv[1]);
+        }else{
+            titleSequence("assets/title.txt","color D");
+        }
         switch(inputCode = getANS()){
 
             case 1:

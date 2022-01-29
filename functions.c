@@ -158,34 +158,52 @@ void titleSequence(char* kirb,char* command){
 void GameLoop(int* endState){
     //setup
     char fileNames[LEVEL_AMOUNT][100] = {"assets/kirbHappy.txt",
+    "assets/yoshi.txt",
+    "assets/yoshiSadge.txt",
+    "assets/cool.txt",
+    "assets/kirbGun.txt",
+    "assets/police.txt",
        
     };
-    char dialogue[LEVEL_AMOUNT][1024] = {"You see kirby, go say hi\n\n1.Go say hi\n2. Shout 'HELLO'\n,3. Cry\n4. Stay silent",
+    char dialogue[LEVEL_AMOUNT][1024] = {"\nYou see kirby, go say hi\n\n1. Go say hi\n2. Shout 'HELLO'\n3. Cry\n4. Stay silent\n",
 
-    "",
+    "\nYoshi appears from around the corner, he asks where you're going.\n\n1. Scream in a wild panic\n2. Make a Yoshi noise\n3. Pretend you dont speak English\n4. Question why Yoshi doesnt speak english\n",
 
+    "\nWith a distained look in his eye, Yoshi stays in silence and slowly walks away.\n\n1. Follow Yoshi and apologise. \n2. Go to kirby\n3. Read the bible\n4. Cough\n",
 
+    "\nYou've got this champ! How do we walk to Kirby?\n\n1. Casual \n2. Normal\n3. Like a Yakuza\n4. Cool\n",
+
+    "\nDamn right! You're slicker than the slickest in the west. But... oh no..\nKIRBY IS SLICKER, HE PULLS A GUN ON YOU!\n\n1. Breakdance\n2. DanceBreak\n3. FanceHake\n4. The fitness gram pacer test\n",
+    
+    "\n\nWhile breakdancing, you astonished kirby, a glint in his eye reflects a security camera.\nThis wakes a security guard up and he immediately calls the police.\nYou leave questioning your day so far...\n\nType anything to continue....\nWrite 10 to continue\n"
     };
-    int answers[LEVEL_AMOUNT] = {};
+
+    int answers[6] = {1,4,2,4,1,10};
     int lives = 10;
     int currPosition = 0;
-    
+    int ans = 0;
 
     
     //
 
-    while(lives != 0){
-
-        // returnIMG(&fileNames[currPosition]);
-        getANS();
-        // printf("Lives %d\n",lives);
-        lives--;
-        currPosition++;
-        if(currPosition > LEVEL_AMOUNT){
-
-                // Win state
-
+    while(lives != 0 || ans != 10){
+        if(currPosition > LEVEL_AMOUNT-1){
+             return;
         }
+
+        system("cls");
+        printf("\n\n");
+        returnIMG(fileNames[currPosition]);
+        printf("%s",dialogue[currPosition]);
+        ans = getANS();
+
+        if(ans != answers[currPosition]){
+            lives--;
+        }else{currPosition++;}
+    
+        
+        
+
 
 
     }
