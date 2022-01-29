@@ -18,14 +18,13 @@ int main(int argc,char** argv){
         switch(inputCode = getANS()){
 
             case 1:
-                GameLoop(&endState);
-                
-                
+                GameLoop(&endState); 
                 break;
 
             case 2:
                 system("clear");
                 returnIMG("assets/help.txt");
+                getANS();
                 break;
             
             case 4:
