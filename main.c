@@ -22,13 +22,13 @@ int main(int argc,char** argv){
                 break;
 
             case 2:
-                system("clear");
+                system("cls");
                 returnIMG("assets/help.txt");
                 getANS();
                 break;
             
             case 4:
-                system("clear");
+                system("cls");
                 titleSequence("assets/title.txt","color D");
                 break;
             
