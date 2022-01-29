@@ -53,6 +53,8 @@ char* CWD(){
 
 }
 
+
+
 char** ListDirectoryContents(const char* sDir,const char* Directory,int* len) //Refactored from https://stackoverflow.com/questions/2314542/listing-directory-contents-using-c-and-windows
 {
     WIN32_FIND_DATA fdFile;
@@ -72,7 +74,7 @@ char** ListDirectoryContents(const char* sDir,const char* Directory,int* len) //
         return false;
     }
 
-    do
+    while(FindNextFile(hFind, &fdFile)) //Find the next file.
     {
 
         if(strcmp(fdFile.cFileName, ".") != 0
@@ -96,7 +98,7 @@ char** ListDirectoryContents(const char* sDir,const char* Directory,int* len) //
                 while(token){
 
                     if(foundDir){
-                        printf("Desired Path: %s\n",token);
+    
                         foundDir = 0;
                         stringARR[stringARRCount] = token;
                         stringARRCount++;
@@ -117,11 +119,11 @@ char** ListDirectoryContents(const char* sDir,const char* Directory,int* len) //
             }
         }
     }
-    while(FindNextFile(hFind, &fdFile)); //Find the next file.
+    
 
     FindClose(hFind); //Always, Always, clean things up!
 
-    // (*len) = (*len)+1;
+    *len = stringARRCount;
 
     return stringARR;
 }
